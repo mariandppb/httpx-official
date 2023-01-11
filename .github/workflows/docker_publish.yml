@@ -25,4 +25,4 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ghcr.io/mariandppb/${{ github.event.repository.name }}:${{ github.run_number }},ghcr.io/surface-security/${{ github.event.repository.name }}:latest
+        tags: ghcr.io/mariandppb/${{ github.event.repository.name }}:${{ github.run_number }},ghcr.io/mariandppb/${{ github.event.repository.name }}:latest
