@@ -1,4 +1,8 @@
-FROM golang:1.17.0-alpine AS builder
+FROM golang:1.19.4-alpine AS builder
+ARG BUILD_SOURCE_TAG=latest
+RUN apk add --no-cache git build-base gcc musl-dev
+RUN go install -v github.com/projectdiscovery/httpx/cmd/httpx@${BUILD_SOURCE_TAG}
+
 WORKDIR /go/src/httpx
 ADD go.mod .
 ADD go.sum .
@@ -19,3 +23,4 @@ VOLUME /output
 # any of these flags can be overriden with docker run args using "=false"
 # example (disable pipeline probe): docker run httpx -pipeline=false
 ENTRYPOINT [ "/httpx", "-silent", "-json", "-no-fallback", "-pipeline", "-response-in-json", "-tech-detect", "-output", "/output" ]
+
