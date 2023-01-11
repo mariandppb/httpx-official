@@ -2,7 +2,7 @@ name: publish
 
 on:
   schedule:
-    - cron: '21 16 * * *'
+    - cron: '30 16 * * *'
 jobs:
   publish:
     runs-on: ubuntu-latest
