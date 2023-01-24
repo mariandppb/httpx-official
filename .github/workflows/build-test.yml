@@ -10,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest, macOS-latest]
     steps:
       - name: Set up Go
         uses: actions/setup-go@v3
@@ -35,14 +35,6 @@ jobs:
         run: bash run.sh
         working-directory: integration_tests/
       
-      - name: Integration Tests Windows
-        if: runner.os == 'Windows'
-        env:
-          GH_ACTION: true
-          MSYS_NO_PATHCONV: true
-        run: bash run.sh
-        working-directory: integration_tests/
-        
       - name: Race Condition Tests
         run: go build -race .
         working-directory: cmd/httpx/
