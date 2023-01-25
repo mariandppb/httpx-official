@@ -22,5 +22,4 @@ VOLUME /output
 
 # any of these flags can be overriden with docker run args using "=false"
 # example (disable pipeline probe): docker run httpx -pipeline=false
-ENTRYPOINT [ "/httpx", "-silent", "-json", "-no-fallback", "-pipeline", "-tech-detect", "-output", "httpx_official_output.txt" ]
-
+ENTRYPOINT [ "/httpx", "-list", "/input/input.txt", "-v", "-json", "-no-fallback", "-pipeline", "-tech-detect", "-output", "/output/output_file.json" ]
